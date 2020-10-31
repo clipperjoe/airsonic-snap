@@ -4,7 +4,7 @@
   Airsonic
 </h1>
 
-<p align="center"><b>This is the snap for Airsonic</b>, <i>“a free, web-based media streamer, providing ubiquitous access to your music. ”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
+<p align="center"><b>This is the snap for Airsonic</b>, <i>“a Free and Open Source community driven media server, providing ubiquitous access to your music.”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
 <p align="center">
@@ -32,7 +32,7 @@ or
 
 ## Summary
 
-### Airsonic is a media streaming and sharing platform created by Sindre Mehus. (see https://airsonic.github.io/)
+### Airsonic is a media streaming and sharing platform maintained by the community. (see https://airsonic.github.io/)
 
 This snap runs under full confinement, which means it will not be able to access files outside of its 'home' folder. Normally this would make the app pretty useless, right? So to get around this issue somewhat the snap also consumes the removable-media interface. But it is not hooked up by default. So after installing the snap do:
 
