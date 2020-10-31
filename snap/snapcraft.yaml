@@ -36,7 +36,9 @@ parts:
     plugin: nil  
     override-build: | 
       wget https://github.com/airsonic/airsonic/releases/download/v10.6.2/airsonic.war -O $SNAPCRAFT_PART_INSTALL/airsonic.war
-
+    build-packages:
+      - wget
+      
   lame:
     plugin: nil
     stage-packages:
