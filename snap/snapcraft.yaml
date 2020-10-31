@@ -1,0 +1,97 @@
+name: airsonic 
+version: '10.6.2+snap1'
+summary: Your complete, personal media streamer.
+description: |
+  Stream from your own computer.
+  Your media — your terms.
+  Enjoy your music and movies everywhere.
+  Share with family and friends.
+
+grade: stable 
+confinement: strict 
+base: core18
+
+apps:
+#  path:
+#    command: echo "$PATH"
+  # lame:
+  #   command: lame
+  # ffmpeg:
+  #   command: ffmpeg
+  # flac:
+  #   command: flac
+
+  airsonic:
+    command: wrapper.sh
+    daemon: simple
+    restart-condition: on-abnormal
+    plugs: 
+      - home
+      - network
+      - network-bind
+      - removable-media
+parts:
+  app:
+    # See 'snapcraft plugins'
+    plugin: nil  
+    override-build: | 
+      wget https://github.com/airsonic/airsonic/releases/download/v10.6.2/airsonic.war -O $SNAPCRAFT_PART_INSTALL/airsonic.war
+
+  lame:
+    plugin: nil
+    stage-packages:
+      - lame
+
+  flac:
+    plugin: nil
+    stage-packages:
+      - flac
+
+  ffmpeg:
+    plugin: nil
+    stage-packages:
+      - ffmpeg
+      - libglu1-mesa
+      - libslang2
+
+  jre:
+    plugin: nil
+    stage-packages: 
+      - openjdk-8-jre-headless
+    override-build: |
+      rm $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-8-openjdk-*/jre/lib/security/cacerts
+      #echo "** Deleting $PWD\cacerts"
+      #rm cacerts
+      #ln -s ../../../../../../../etc/ssl/certs/java/cacerts cacerts
+      snapcraftctl build
+
+  launcher:
+    plugin: dump
+    source: bin
+
+  # Do not enable parts below
+  # Cleanup removes packages necessary for ffmpeg to function properly
+
+  # This part removes all the files in this snap which already exist in
+  # connected content and base snaps. Since these files will be available
+  # at runtime from the content and base snaps, they do not need to be
+  # included in this snap itself.
+  #
+  # More info: https://forum.snapcraft.io/t/reducing-the-size-of-desktop-snaps/17280#heading--cleanup-part
+  #
+  # cleanup:
+  #   after:  # Make this part run last; list all your other parts here
+  #     - app
+  #     - lame
+  #     - flac
+  #     - ffmpeg
+  #     - jre
+  #     - launcher
+  #   plugin: nil
+  #   build-snaps:  # List all content-snaps and base snaps you're using here
+  #     - core
+  #   override-prime: |
+  #     set -eux
+  #     for snap in "core"; do  # List all content-snaps and base snaps you're using here
+  #         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+  #     done

@@ -1,0 +1,107 @@
+#!/bin/sh -e
+
+###################################################################################
+# Shell script hook for running when Airsonic snap install/refresh/config change.
+#
+# Author: ArubIslander
+###################################################################################
+
+# Note: set some environment variables relative to the snap.
+
+export AIRSONIC_HOME=$SNAP_USER_COMMON/var/airsonic
+export AIRSONIC_DEFAULT_MUSIC_FOLDER=$SNAP_USER_COMMON/var/music
+export AIRSONIC_DEFAULT_PODCAST_FOLDER=$SNAP_USER_COMMON/var/music/Podcast
+export AIRSONIC_DEFAULT_PLAYLIST_FOLDER=$SNAP_USER_COMMON/var/playlists
+
+AIRSONIC_TRANSCODE=$AIRSONIC_HOME/transcode
+
+mkdir -p "$AIRSONIC_TRANSCODE"
+# lame
+if [ -L "$AIRSONIC_TRANSCODE/lame" ]; then
+    rm $AIRSONIC_TRANSCODE/lame
+fi
+ln -s $SNAP/usr/bin/lame $AIRSONIC_TRANSCODE/lame
+
+# ffmpeg
+if [ -L "$AIRSONIC_TRANSCODE/ffmpeg" ]; then
+    rm $AIRSONIC_TRANSCODE/ffmpeg
+fi
+ln -s $SNAP/usr/bin/ffmpeg $AIRSONIC_TRANSCODE/ffmpeg
+
+# flac
+if [ -L "$AIRSONIC_TRANSCODE/flac" ]; then
+    rm $AIRSONIC_TRANSCODE/flac
+fi
+ln -s $SNAP/usr/bin/flac $AIRSONIC_TRANSCODE/flac
+
+mkdir -p "$AIRSONIC_HOME"
+mkdir -p "$AIRSONIC_DEFAULT_MUSIC_FOLDER"
+mkdir -p "$AIRSONIC_DEFAULT_PODCAST_FOLDER"
+mkdir -p "$AIRSONIC_DEFAULT_PLAYLIST_FOLDER"
+
+#export PATH=$SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH/bin:$PATH
+
+# Obtain configuration value
+host=$(snapctl get host)
+if ! expr "$host" : '^.\+$' > /dev/null; then
+    host="0.0.0.0"
+    snapctl set host="$host"
+fi
+
+# Validate it
+if ! expr "$host" :  '^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$' > /dev/null; then
+    echo "\"$host\" is not a valid host value" >&2
+    exit 1
+fi
+
+# Obtain configuration value
+port="$(snapctl get port)"
+if ! expr "$port" : '^.\+$' > /dev/null; then
+    port="8080"
+    snapctl set port="$port"
+fi
+
+# Validate it
+if ! expr "$port" : '^[0-9]\+$' > /dev/null; then
+    echo "\"$port\" is not a valid port" >&2
+    exit 1
+fi
+
+# Obtain configuration value
+https_port="$(snapctl get https-port)"
+if ! expr "$https_port" : '^.\+$' > /dev/null; then
+    https_port="0"
+    snapctl set https-port="$https_port"
+fi
+
+# Validate it
+if ! expr "$https_port" : '^[0-9]\+$' > /dev/null; then
+    echo "\"$https_port\" is not a valid port" >&2
+    exit 1
+fi
+
+# Obtain configuration value
+context_path="$(snapctl get context-path)"
+if ! expr "$context_path" : '^.\+$' > /dev/null; then
+    context_path="/"
+    snapctl set context-path="$context_path"
+fi
+
+# Validate it
+if ! expr "$context_path" : '^/[^/]*$' > /dev/null; then
+    echo "\"$context_path\" is not a context path" >&2
+    exit 1
+fi
+
+# Obtain configuration value
+max_memory="$(snapctl get max-memory)"
+if ! expr "$max_memory" : '^.\+$' > /dev/null; then
+    max_memory="150"
+    snapctl set max-memory="$max_memory"
+fi
+
+# Validate it
+if ! expr "$max_memory" : '^[0-9]\+$' > /dev/null; then
+    echo "\"$max_memory\" is not a max-memory value" >&2
+    exit 1
+fi
