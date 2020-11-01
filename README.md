@@ -14,11 +14,12 @@ distributions.</p>
 
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by ArubIslander</p>
 
-## Build from repo
+## Build from repo and test the snap
 
-    $ git clone https://github.com/arubislander/airsonic-snap.git
-    $ snapcraft snap
-    $ sudo snap install sairsonic_<snap version>_<snap arch>.snap --dangerous
+    $ git clone https://gitlab.com/arubislander/airsonic-snap.git
+    $ cd airsonic-snap
+    $ snapcraft snap try
+    $ snap try prime
 
 ## Install from store
 
@@ -51,11 +52,11 @@ After that, anything mounted under /media will be accessible to the snap.
 
 To set the aironic service to use a maximum of 450 MB and listen on URL: http://192.168.5.10:4040/airsonic do:
 
-    $ sudo snap set airsonic-arubislander host=192.168.1.10 port=4040 context-path="/airsonic" max-memory=450
+    $ sudo snap set airsonic host=192.168.1.10 port=4040 context-path="/airsonic" max-memory=450
 
 The service needs to be restarted to pick up the new settings:
 
-    $ sudo snap restart airsonic-arubislander
+    $ sudo snap restart airsonic
 
 Happy listening!
 
