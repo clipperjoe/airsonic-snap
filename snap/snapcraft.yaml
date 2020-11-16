@@ -11,6 +11,12 @@ grade: stable
 confinement: strict 
 base: core18
 
+architectures:
+  - build-on: i386
+  - build-on: amd64
+  - build-on: arm64
+  - build-on: armhf
+
 apps:
 #  path:
 #    command: echo "$PATH"
