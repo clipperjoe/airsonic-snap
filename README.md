@@ -8,7 +8,9 @@
 distributions.</p>
 
 <p align="center">
-<a href="https://build.snapcraft.io/user/arubislander/airsonic"><img src="https://build.snapcraft.io/badge/arubislander/airsonic.svg" alt="Snap Status"></a>
+<a href="https://snapcraft.io/airsonic">
+<img alt="airsonic" src="https://snapcraft.io/airsonic/badge.svg" />
+</a>
 </p>
 
 
@@ -63,5 +65,8 @@ Happy listening!
 ---
 
 ## Version history
+### versions 10.6.2+snap2 - 6
+Platform package updates
+
 ### New in version 10.6.2+snap1
 Initial release to the Snap Store
