@@ -56,7 +56,7 @@ To set the aironic service to use a maximum of 450 MB and listen on URL: http://
 
     $ sudo snap set airsonic host=192.168.1.10 port=4040 context-path="/airsonic" max-memory=450
 
-The service needs to be restarted to pick up the new settings:
+The service no longer needs to be restarted to pick up the new settings. But in case you do want to:
 
     $ sudo snap restart airsonic
 
@@ -65,6 +65,11 @@ Happy listening!
 ---
 
 ## Version history
+### version 10.6.2+snap7
+* Platform package updates
+* Service now restarts automatically to apply changed configurations
+
+
 ### versions 10.6.2+snap2 - 6
 Platform package updates
 
