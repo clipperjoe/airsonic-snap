@@ -96,7 +96,7 @@ fi
 # Obtain configuration value
 max_memory="$(snapctl get max-memory)"
 if ! expr "$max_memory" : '^.\+$' > /dev/null; then
-    max_memory="150"
+    max_memory="450"
     snapctl set max-memory="$max_memory"
 fi
 
