@@ -1,5 +1,5 @@
 name: airsonic 
-version: '10.6.2+snap8'
+version: '10.6.2+snap9'
 summary: Your complete, personal media streamer.
 description: |
   Stream from your own computer.
@@ -9,7 +9,7 @@ description: |
 
 grade: stable 
 confinement: strict 
-base: core18
+base: core
 
 architectures:
   - build-on: i386
@@ -30,7 +30,7 @@ apps:
   airsonic:
     command: wrapper.sh
     daemon: simple
-    restart-condition: on-abnormal
+    restart-condition: always #on-abnormal
     plugs: 
       - home
       - network
@@ -45,29 +45,20 @@ parts:
     build-packages:
       - wget
       
-  lame:
-    plugin: nil
-    stage-packages:
-      - lame
-
-  flac:
-    plugin: nil
-    stage-packages:
-      - flac
-
-  ffmpeg:
-    plugin: nil
-    stage-packages:
-      - ffmpeg
-      - libglu1-mesa
-      - libslang2
+    build-snaps:
+      - multipass-sshfs
 
   jre:
     plugin: nil
     stage-packages: 
-      - openjdk-8-jre-headless
+      - openjdk-8-jre #-headless
+      - flac
+      - ffmpeg
+      - libglu1-mesa
+      - libslang2
+      - lame
     override-build: |
-      rm $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-8-openjdk-*/jre/lib/security/cacerts
+      #rm $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-8-openjdk-*/jre/lib/security/cacerts
       #echo "** Deleting $PWD\cacerts"
       #rm cacerts
       #ln -s ../../../../../../../etc/ssl/certs/java/cacerts cacerts
@@ -90,9 +81,6 @@ parts:
   # cleanup:
   #   after:  # Make this part run last; list all your other parts here
   #     - app
-  #     - lame
-  #     - flac
-  #     - ffmpeg
   #     - jre
   #     - launcher
   #   plugin: nil
