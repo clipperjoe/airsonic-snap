@@ -1,5 +1,5 @@
 name: airsonic 
-version: '10.6.2+snap10'
+version: '10.6.2+snap11'
 summary: Your complete, personal media streamer.
 description: |
   Stream from your own computer.
@@ -50,22 +50,18 @@ parts:
 
   jre:
     plugin: nil
-    stage-packages: 
-      - openjdk-8-jre-headless
+    build-packages:
       - ca-certificates
       - ca-certificates-java
+      - openjdk-8-jre-headless
+    stage-packages: 
+      - openjdk-8-jre-headless
       - flac
       - ffmpeg
       - libglu1-mesa
       - libslang2
       - lame
-      #- freeglut3
-    override-build: |
-      #rm $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-8-openjdk-*/jre/lib/security/cacerts
-      #echo "** Deleting $PWD\cacerts"
-      #rm cacerts
-      #ln -s ../../../../../../../etc/ssl/certs/java/cacerts cacerts
-      snapcraftctl build
+      - freeglut3
 
   launcher:
     plugin: dump
