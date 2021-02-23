@@ -65,6 +65,15 @@ Happy listening!
 ---
 
 ## Version history
+### version 10.6.2+snap11
+Platform package updates
+
+### version 10.6.2+snap10
+Fixed missing packages in snap include
+
+### version 10.6.2+snap8 - 9
+Platform package updates
+
 ### version 10.6.2+snap7
 * Platform package updates
 * Service now restarts automatically to apply changed configurations
