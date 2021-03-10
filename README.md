@@ -65,7 +65,7 @@ Happy listening!
 ---
 
 ## Version history
-### version 10.6.2+snap11
+### version 10.6.2+snap13
 Platform package updates
 
 ### version 10.6.2+snap10
