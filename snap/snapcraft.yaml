@@ -56,7 +56,7 @@ parts:
       - ca-certificates-java
       - openjdk-8-jre-headless
     stage-packages: 
-      - openjdk-8-jre-headless
+      - openjdk-11-jre-headless
       - flac
       - ffmpeg
       - libglu1-mesa
