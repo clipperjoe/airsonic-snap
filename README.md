@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="https://airsonic.github.io/img/logo.png" style="width:256px" alt="Airsonic">
   <br />
-  Airsonic
+  Airsonic Advanced (Edge Release)
 </h1>
 
 <p align="center"><b>This is the snap for Airsonic</b>, <i>“a Free and Open Source community driven media server, providing ubiquitous access to your music.”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
