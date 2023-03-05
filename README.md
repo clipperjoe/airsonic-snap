@@ -8,8 +8,8 @@
 distributions.</p>
 
 <p align="center">
-<a href="https://snapcraft.io/airsonic">
-<img alt="airsonic" src="https://snapcraft.io/airsonic/badge.svg" />
+<a href="https://snapcraft.io/airsonic-advanced-11">
+<img alt="airsonic-advanced" src="https://snapcraft.io/airsonic-advanced-11/badge.svg" />
 </a>
 </p>
 
