@@ -1,7 +1,7 @@
 name: airsonic-advanced-11 
 version: '11.0.0'
 summary: Pre-Release - Your complete, personal media streamer.
-description: 
+description: |
   Stream from your own computer.
   Your media — your terms.
   Enjoy your music and movies everywhere.
@@ -62,6 +62,10 @@ parts:
       - libslang2
       - lame
       - freeglut3
+      
+    override-prime: |
+      snapcraftctl prime
+      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
 
   launcher:
     plugin: dump
