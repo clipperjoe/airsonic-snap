@@ -18,7 +18,7 @@ distributions.</p>
 
 ## Build from repo and test the snap
 
-    $ git clone https://gitlab.com/arubislander/airsonic-snap.git
+    $ git clone https://gitlab.com/clipperjoe/airsonic-snap.git
     $ cd airsonic-snap
     $ snapcraft snap try
     $ snap try prime
