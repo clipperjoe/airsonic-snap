@@ -54,26 +54,3 @@ The service no longer needs to be restarted to pick up the new settings. But in 
     $ sudo snap restart airsonic
 
 Happy listening!
-
----
-
-## Version history
-### version 10.6.2+snap13
-Platform package updates
-
-### version 10.6.2+snap10
-Fixed missing packages in snap include
-
-### version 10.6.2+snap8 - 9
-Platform package updates
-
-### version 10.6.2+snap7
-* Platform package updates
-* Service now restarts automatically to apply changed configurations
-
-
-### versions 10.6.2+snap2 - 6
-Platform package updates
-
-### New in version 10.6.2+snap1
-Initial release to the Snap Store
