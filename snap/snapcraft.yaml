@@ -1,6 +1,6 @@
 name: airsonic 
-version: '10.6.0'
-summary: Your complete, personal media streamer.
+version: '11.0.0'
+summary: Pre-Release - Your complete, personal media streamer.
 description: |
   Stream from your own computer.
   Your media — your terms.
@@ -41,7 +41,7 @@ parts:
     # See 'snapcraft plugins'
     plugin: nil  
     override-build: | 
-      wget https://github.com/airsonic-advanced/airsonic-advanced/releases/download/v10.6.0/airsonic.war -O $SNAPCRAFT_PART_INSTALL/airsonic.war
+      wget https://github.com/airsonic-advanced/airsonic-advanced/releases/download/11.0.0-SNAPSHOT.20230217142243/airsonic.war -O $SNAPCRAFT_PART_INSTALL/airsonic.war
            
     build-packages:
       - wget
