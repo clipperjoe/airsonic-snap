@@ -30,6 +30,9 @@ apps:
     command: wrapper.sh
     daemon: simple
     restart-condition: always #on-abnormal
+    environment:
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
+      PATH: $JAVA_HOME/bin:$PATH # there is no ./jre folder
     plugs: 
       - home
       - network
