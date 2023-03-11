@@ -39,7 +39,7 @@ mkdir -p "$AIRSONIC_DEFAULT_MUSIC_FOLDER"
 mkdir -p "$AIRSONIC_DEFAULT_PODCAST_FOLDER"
 mkdir -p "$AIRSONIC_DEFAULT_PLAYLIST_FOLDER"
 
-#export PATH=$SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH/bin:$PATH
+export PATH=$SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH/bin:$PATH
 
 # Obtain configuration value
 host=$(snapctl get host)
