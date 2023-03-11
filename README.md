@@ -18,7 +18,7 @@ distributions.</p>
 
 ## Install from store
 
-    sudo snap install airsonic-advanced-11
+    sudo snap install --edge airsonic-advanced-11
 
 or
 
