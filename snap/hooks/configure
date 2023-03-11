@@ -57,7 +57,7 @@ fi
 # Obtain configuration value
 port="$(snapctl get port)"
 if ! expr "$port" : '^.\+$' > /dev/null; then
-    port="8080"
+    port="443"
     snapctl set port="$port"
 fi
 
