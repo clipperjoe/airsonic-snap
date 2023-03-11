@@ -9,7 +9,8 @@ description: |
 
 grade: stable 
 confinement: strict 
-base: core18
+# base: core18 # Attempting version core22
+base: core22
 
 architectures:
   - build-on: amd64
@@ -65,16 +66,11 @@ parts:
       - libslang2
       - lame
       - freeglut3
-#      - libusb-0.1-4
     prime:
       - -usr/lib/jvm/java-11-openjdk-amd64/lib/security/blacklisted.certs # broken symlink; bug in the debian package
       - -usr/lib/jvm/java-11-openjdk-armhf/lib/security/blacklisted.certs # broken symlink; bug in the debian package
       - -usr/lib/jvm/java-11-openjdk-arm64/lib/security/blacklisted.certs # broken symlink; bug in the debian package   
-
-#    override-prime: |
-#      snapcraftctl prime
-#      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
-
+      
   launcher:
     plugin: dump
     source: bin
