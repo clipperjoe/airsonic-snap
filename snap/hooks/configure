@@ -68,17 +68,17 @@ if ! expr "$port" : '^[0-9]\+$' > /dev/null; then
 fi
 
 # # Obtain configuration value
-https_port="$(snapctl get https-port)"
-if ! expr "$https_port" : '^.\+$' > /dev/null; then
-     https_port="443"
-     snapctl set https-port="$https_port"
-fi
+#https_port="$(snapctl get https-port)"
+#if ! expr "$https_port" : '^.\+$' > /dev/null; then
+#     https_port="443"
+#     snapctl set https-port="$https_port"
+#fi
 
 # # Validate it
-if ! expr "$https_port" : '^[0-9]\+$' > /dev/null; then
-     echo "\"$https_port\" is not a valid port" >&2
-     exit 1
-fi
+#if ! expr "$https_port" : '^[0-9]\+$' > /dev/null; then
+#     echo "\"$https_port\" is not a valid port" >&2
+#     exit 1
+#fi
 
 # Obtain configuration value
 context_path="$(snapctl get context-path)"
